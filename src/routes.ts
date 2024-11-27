@@ -9,8 +9,7 @@ const YOUR_DOMAIN = 'http://localhost:5173/'
 export const router = express.Router()
 
 // This is your Stripe CLI webhook secret for testing your endpoint locally.
-const endpointSecret =
-  'whsec_f8ab4df060a8e2cd14d0a1442da8a136bdea16c8bea7e7cd882f6c8b9abd0eb8'
+const endpointSecret = 'whsec_pyp4x5u8LhJoF2rWW2rPEgWct4jJ2ImZ'
 
 router.post(
   '/v1/webhook',
