@@ -12,7 +12,7 @@ export const router = express.Router()
 const endpointSecret = 'whsec_pyp4x5u8LhJoF2rWW2rPEgWct4jJ2ImZ'
 
 router.post(
-  '/v1/webhook',
+  '/v1/webhook_endpoints',
   express.raw({ type: 'application/json' }),
   (request: Request, response: Response) => {
     console.log('chegou no post webhook')
@@ -60,7 +60,7 @@ router.post('/create-checkout-session', async (req, res) => {
 
   res.redirect(303, session.url)
 })
-router.get('/v1/webhook', (req: Request, res: Response) => {
+router.get('/v1/webhook_endpoints', (req: Request, res: Response) => {
   console.log('Chamou o webhook')
   res.send('Welcome to the Webhooks API')
 })
