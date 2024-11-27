@@ -11,10 +11,13 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.error(err.stack) // Log do erro no console
-  res.status(500).json({
-    message: 'Ocorreu um erro interno no servidor',
-    error: process.env.NODE_ENV === 'development' ? err.message : undefined,
-  })
+  if (err)
+    res.status(500).json({
+      message: 'Ocorreu um erro interno no servidor',
+      error: process.env.NODE_ENV === 'development' ? err.message : undefined,
+    })
+
+  next()
 })
 app.use(router)
 
