@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { NextFunction, Request, Response } from 'express'
 import { router } from './routes'
 import 'dotenv/config'
 import cors from 'cors'
@@ -8,6 +8,14 @@ const app = express()
 // Middleware
 app.use(cors())
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  console.error(err.stack) // Log do erro no console
+  res.status(500).json({
+    message: 'Ocorreu um erro interno no servidor',
+    error: process.env.NODE_ENV === 'development' ? err.message : undefined,
+  })
+})
 app.use(router)
 
 // Set port
