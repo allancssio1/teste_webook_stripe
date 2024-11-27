@@ -20,6 +20,7 @@ router.post(
     const sig: any = request.headers['stripe-signature']
 
     let event
+    console.log('🚀 ~ sig:', sig)
 
     try {
       event = _stripe.webhooks.constructEvent(request.body, sig, endpointSecret)
@@ -60,7 +61,7 @@ router.post('/create-checkout-session', async (req, res) => {
 
   res.redirect(303, session.url)
 })
-router.get('/webhook', (req: Request, res: Response) => {
+router.get('/v1/webhook', (req: Request, res: Response) => {
   console.log('Chamou o webhook')
   res.send('Welcome to the Webhooks API')
 })
