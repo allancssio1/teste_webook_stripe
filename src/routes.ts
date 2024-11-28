@@ -12,7 +12,7 @@ export const router = express.Router()
 const endpointSecret = 'whsec_pyp4x5u8LhJoF2rWW2rPEgWct4jJ2ImZ'
 
 router.post(
-  '/v1/webhook_endpoints',
+  '/webhook',
   express.raw({ type: 'application/json' }),
   (request: Request, response: Response) => {
     console.log('chegou no post webhook')
